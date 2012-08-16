@@ -1,4 +1,5 @@
-star.
+= star. =
+[![Build Status](https://secure.travis-ci.org/andreasneumeier/star.png?branch=master)](http://travis-ci.org/andreasneumeier/star)
 
 django-application to like, +1, star pages or urls
 

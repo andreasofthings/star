@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 """Setup file for easy installation"""
 from os.path import join, dirname
-from setuptools import setup
-
+from setuptools import setup, find_packages
 
 version = __import__('star').__version__
 
@@ -27,7 +26,7 @@ setup(name='django-star',
       license='BSD',
       keywords='django, like, star, track, application',
       url='https://github.com/andreasneumeier/star',
-      packages=['star', ],
+      packages=['star', 'star.templatetags',],
       package_data={'star': ['locale/*/LC_MESSAGES/*']},
       long_description=long_description(),
       install_requires=['django>=1.2.5', ],
