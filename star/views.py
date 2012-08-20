@@ -49,7 +49,8 @@ def script_js(request):
   """
   # ToDO
   script = get_template("star/script.js")
-  return HttpResponse(script.render())
+  context = RequestContext(request, {})
+  return HttpResponse(script.render(context))
 
 @require_GET
 def style_css(request):
