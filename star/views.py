@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.template.loader import get_template
+from django.template import RequestContext, loader
 from django.views.decorators.http import require_POST, require_GET, require_http_methods
 from models import UpDown
 
@@ -48,7 +48,7 @@ def script_js(request):
   return js for the widget
   """
   # ToDO
-  script = get_template("star/script.js")
+  script = loader.get_template("star/script.js")
   context = RequestContext(request, {})
   return HttpResponse(script.render(context))
 
@@ -58,8 +58,9 @@ def style_css(request):
   return the css for the js widget
   """
   # ToDO
-  style = get_template("star/style.css")
-  return HttpResponse(style.render())
+  style = loader.get_template("star/style.css")
+  context = RequestContext(request, {})
+  return HttpResponse(style.render(context))
 
 
 @require_POST
