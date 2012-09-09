@@ -62,7 +62,6 @@ def style_css(request):
   context = RequestContext(request, {})
   return HttpResponse(style.render(context))
 
-
 @require_POST
 def up(request):
   """
@@ -115,5 +114,20 @@ def score(request):
       """%(cntxt)).splitlines())
       jsonp = "%s ( {'html': '%s' } )"
       return HttpResponse(jsonp % (request.GET['callback'], html))
- 
 
+@require_GET
+def star_callback(request):
+  if 'callback' in request.GET:
+    callback = request.GET['callback']
+  else:
+    return HttpResponse("")
+  if 'count' in request.session:
+    request.session['count'] += 1
+  else:
+    request.session['count'] = 1
+  html = """
+  <div id="star_top">counter</div>
+  <div id="star_bottom">%s</div>
+  """%(request.session['count'])
+  result = "%s({'html':%s})"%(callback, html)
+  return HttpResponse(result, content_type='text/javascript')

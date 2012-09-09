@@ -1,1 +1,24 @@
 /* widget style */
+#star { 
+  width: 30px; 
+  height: 50px;
+  background: red;
+  z-index: -1;
+  border: 1px;
+  border-color: 0;
+}
+
+#star_top {
+  position: absolute;
+  width: 28px; 
+  height: 23px;
+  color: blue;
+  z-index: 1;
+}
+
+#star_bottom {
+  position: absolute;
+  width: 28px; 
+  height: 23px;
+  background: green;
+}

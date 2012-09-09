@@ -19,9 +19,12 @@ from django.views.generic import TemplateView
 
 urlpatterns += patterns('star.views',
   # include this
-  url(r'^/static/star.js$', TemplateView.as_view(template_name="star.js"), name="star_js"),
+  url(r'^/star.js$', TemplateView.as_view(template_name="star/star.js"), name="star_js"),
   # receives data 
-  url(r'^/star$', 'star', name='star_callback'),
+  url(r'^/star$', 'star_callback', name='star_callback'),
   # style
-  url(r'^/static/star.css$', TemplateView.as_view(template_name="star.js"), name='star_css'),
+  url(r'^/static/star.css$', TemplateView.as_view(template_name="star/star.css"), name='star_css'),
+  
+  # demo.html
+  url(r'^/demo.html$', TemplateView.as_view(template_name="star/demo.html"), name='star_demo'),
 )

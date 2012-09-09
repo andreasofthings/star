@@ -43,16 +43,14 @@
       var css_link = $("<link>", { 
                   rel: "stylesheet", 
                   type: "text/css", 
-                  href: "{{ url star_css }}" 
+                  href: "{% url star_css %}" 
       });
       css_link.appendTo('head');
 
       /******* Load HTML *******/
-      var jsonp_url = "{{ url star }}?callback=?";
-      var content = " <i id='up' class='icon-chevron-up'></i> <i id='down' class='icon-chevron-down'></i> ";
-      $('#star').html(content_top);
+      var jsonp_url = "{% url star_callback %}?callback=?";
       $.getJSON(jsonp_url, function(data) {
-        $('#star').html("This data comes from another server: " + data.html);
+        $('#star').html(data.html);
       });
     });
   }
