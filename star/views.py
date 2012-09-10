@@ -125,9 +125,12 @@ def star_callback(request):
     request.session['count'] += 1
   else:
     request.session['count'] = 1
-  html = """
-  <div id="star_top">counter</div>
-  <div id="star_bottom">%s</div>
-  """%(request.session['count'])
-  result = "%s({'html':%s})"%(callback, html)
+
+  html = loader.get_template("star/star_callback.html")
+  context = RequestContext(request, {
+    'count': request.session['count'],
+  })
+
+  result = """%s({'html':'%s'})"""%(callback, html.render(context).strip('\r\n'))
+
   return HttpResponse(result, content_type='text/javascript')

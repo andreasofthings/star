@@ -1,24 +1,29 @@
 /* widget style */
 #star { 
-  width: 30px; 
-  height: 50px;
-  background: red;
-  z-index: -1;
-  border: 1px;
-  border-color: 0;
+  width: 50px; 
+  border: 1px solid #999;
+  font-family: Georgia,"Times New Roman", serif;
+  line-height: 1; 
+  position: absolute; 
+  top: 0; 
+  /*left: -4.8em; */
+  width: 3.5em;
+  border-radius: 4px;
 }
 
-#star_top {
-  position: absolute;
-  width: 28px; 
-  height: 23px;
-  color: blue;
-  z-index: 1;
+#star div {
+  display: block; 
+  text-align: center; 
 }
 
-#star_bottom {
-  position: absolute;
-  width: 28px; 
-  height: 23px;
-  background: green;
+.star_top {
+  font-size: 1em; 
+}
+
+.star_bottom {
+  background-color: #2358B8;
+  color: #FFF; 
+  font-size: 1.2em; 
+  padding: 0.3em 0; 
+  margin-top: 0.3em;
 }

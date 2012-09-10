@@ -18,7 +18,7 @@ def long_description():
         return LONG_DESCRIPTION
 
 
-setup(name='django-star',
+setup(name='django-ilike',
       version=version,
       author='Andreas Neumeier',
       author_email='andreas@neumeier.org',
@@ -29,14 +29,12 @@ setup(name='django-star',
       packages=['star', 'star.templatetags',],
       package_data={'star': ['locale/*/LC_MESSAGES/*']},
       long_description=long_description(),
-      install_requires=['django>=1.2.5', ],
+      install_requires=['django>=1.4.1', ],
       classifiers=['Framework :: Django',
                    'Development Status :: 4 - Beta',
                    'Topic :: Internet',
                    'License :: OSI Approved :: BSD License',
                    'Intended Audience :: Developers',
                    'Environment :: Web Environment',
-                   'Programming Language :: Python :: 2.5',
-                   'Programming Language :: Python :: 2.6',
                    'Programming Language :: Python :: 2.7'])
 
