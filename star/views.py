@@ -21,7 +21,7 @@ def star_image(offset):
   pil.save(response, "PNG")
   return response
 
-def star(request):
+def count(request):
   """
   number is increased every time the image is displayed/called
   ToDo:
@@ -39,31 +39,9 @@ def star(request):
   # return HttpResponse(result)
   return star_image(request.session['number']%3)
 
-@require_GET
-def script_js(request):
-  """
-  Assume jQuery is there
-  http://alexmarandon.com/articles/web_widget_jquery/
-
-  return js for the widget
-  """
-  # ToDO
-  script = loader.get_template("star/script.js")
-  context = RequestContext(request, {})
-  return HttpResponse(script.render(context))
-
-@require_GET
-def style_css(request):
-  """
-  return the css for the js widget
-  """
-  # ToDO
-  style = loader.get_template("star/style.css")
-  context = RequestContext(request, {})
-  return HttpResponse(style.render(context))
 
 @require_POST
-def up(request):
+def count_up(request):
   """
   ajax receiver for the "vote up" button on the widget
   """
@@ -86,14 +64,14 @@ def up(request):
   return HttpResponse(str(counter.score()))
 
 @require_POST
-def down(request):
+def count_down(request):
   url = request.POST['url']
   counter, created = UpDown.objects.get_or_create(absolute_url=url)
   counter.down += 1
   counter.save()
   return HttpResponse(str(counter.score()))
 
-def score(request):
+def count_score(request):
   if request.method == 'POST':
     url = request.POST['url']
     counter, created = UpDown.objects.get_or_create(absolute_url=url)
@@ -117,6 +95,9 @@ def score(request):
 
 @require_GET
 def star_callback(request):
+  """
+  counts user visits and displays the number in a block with css and html
+  """
   if 'callback' in request.GET:
     callback = request.GET['callback']
   else:

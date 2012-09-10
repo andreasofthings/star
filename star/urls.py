@@ -1,21 +1,18 @@
 from django.conf import settings
 from django.conf.urls.defaults import *
 
+from django.views.generic import TemplateView
 import views
 
 urlpatterns = patterns('star.views',
-  url(r'^$', 'star', name='tracking_star'),
-  url(r'^/static/script.js$', 'script_js', name='tracking_js'),
-  url(r'^/static/style.css$', 'style_css', name='tracking_css'),
-  url(r'^/vote/up$', 'up', name='tracking_up'),
-  url(r'^/vote/down$', 'down', name='tracking_down'),
+  url(r'^$', 'count', name='tracking_star'),
+  url(r'^/score$', 'count_score', name='count_score'),
+  url(r'^/vote/up$', 'count_up', name='count_up'),
+  url(r'^/vote/down$', 'count_down', name='count_down'),
+  url(r'^/static/count.js$', TemplateView.as_view(template_name='count.js'), name='count_js'),
+  url(r'^/static/count.css$', TemplateView.as_view(template_name='count.css'), name='count_css'),
 )
 
-urlpatterns += patterns('star.views',
-  url(r'^/score$', 'score', name='tracking_score'),
-)
-
-from django.views.generic import TemplateView
 
 urlpatterns += patterns('star.views',
   # include this
