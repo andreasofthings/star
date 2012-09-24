@@ -51,6 +51,7 @@
       var jsonp_url = "{% url star_callback %}?callback=?";
       $.getJSON(jsonp_url, function(data) {
         $('#star').html(data.html);
+        $('#star').click(function(){alert("!")});
       });
     });
   }

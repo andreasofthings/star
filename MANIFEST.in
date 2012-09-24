@@ -1,2 +1,2 @@
-nclude AUTHORS CHANGES README INSTALL LICENCE
+include AUTHORS CHANGES README INSTALL LICENCE
 recursive-include star *.py *.html *.js *.css
