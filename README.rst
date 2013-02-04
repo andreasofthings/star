@@ -1,3 +1,7 @@
+============
+django-ilike
+============
+
 # star. 
 
 [![Build Status](https://secure.travis-ci.org/andreasneumeier/star.png?branch=master)](http://travis-ci.org/andreasneumeier/star)

@@ -1,3 +1,11 @@
+#!/usr/bin/env python2.7
+# -*- coding: utf-8 -*-
+
+"""
+views.py
+
+"""
+
 from django.http import HttpResponse
 from django.template import RequestContext, loader
 from django.views.decorators.http import require_POST, require_GET, require_http_methods
@@ -95,23 +103,29 @@ def count_score(request):
 
 @require_GET
 def star_callback(request):
-  """
-  counts user visits and displays the number in a block with css and html
-  """
-  if 'callback' in request.GET:
-    callback = request.GET['callback']
-  else:
-    return HttpResponse("")
-  if 'count' in request.session:
-    request.session['count'] += 1
-  else:
-    request.session['count'] = 1
+    """
+    star_callback(request)
+    ======================
 
-  html = loader.get_template("star/star_callback.html")
-  context = RequestContext(request, {
-    'count': request.session['count'],
-  })
+    counts user visits and displays the number in a block with css and html
+    """
+    if 'callback' in request.GET:
+        callback = request.GET['callback']
+    else:
+        return HttpResponse("")
 
-  result = """%s({'html':'%s'})"""%(callback, html.render(context).strip('\r\n'))
+    if 'count' in request.session and 'clicked' in request.GET:
+        request.session['count'] += 1
+    else:
+        request.session['count'] = 1
 
-  return HttpResponse(result, content_type='text/javascript')
+    html = loader.get_template("star/star_callback.html")
+  
+    context = RequestContext(request, {
+        'count': request.session['count'],
+    })
+
+    result = """%s({'html':'%s'})"""%(callback, html.render(context).strip('\r\n'))
+
+    return HttpResponse(result, content_type='text/javascript')
+

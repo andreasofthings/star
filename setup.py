@@ -8,9 +8,8 @@ version = __import__('star').__version__
 LONG_DESCRIPTION = """
 """
 
-
 def long_description():
-    """-
+    """
     """
     try:
         return open(join(dirname(__file__), 'README.md')).read()
