@@ -7,6 +7,10 @@ django-ilike
 .. image:: https://travis-ci.org/aneumeier/star.svg?branch=master
     :target: https://travis-ci.org/aneumeier/star
 
+.. image:: https://coveralls.io/repos/aneumeier/star/badge.svg
+  :target: https://coveralls.io/r/aneumeier/star
+
+
 django-application to like, +1, star pages or urls
 
 comes with django template-tags and javascript includes
