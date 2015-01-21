@@ -1,7 +1,6 @@
 from django.db import models
 from django.conf import settings
 from django.core import urlresolvers
-from django.contrib.sites.models import Site
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from django.utils.encoding import force_text
@@ -44,14 +43,15 @@ class Star(models.Model):
         fk_field="object_pk"
     )
 
-    # Metadata about the comment
-    site = models.ForeignKey(Site)
-
-    def score(self):
-        return self.up - self.down
-
     def __unicode__(self):
-        return "%s: %s" % (self.absolute_url, self.score())
+        return "Star of object %s by %s" % \
+            (self.content_object, self.user.get_username())
+
+    class Meta:
+        db_table = 'stars'
+        unique_together = [('user', 'content_type', 'object_pk', )]
+        verbose_name = _('star')
+        verbose_name_plural = _('stars')
 
     def get_content_object_url(self):
         """
