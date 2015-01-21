@@ -4,7 +4,8 @@ django-ilike
 
 # star. 
 
-[![Build Status](https://secure.travis-ci.org/andreasneumeier/star.png?branch=master)](http://travis-ci.org/andreasneumeier/star)
+.. image:: https://travis-ci.org/aneumeier/star.svg?branch=master
+    :target: https://travis-ci.org/aneumeier/star
 
 django-application to like, +1, star pages or urls
 
