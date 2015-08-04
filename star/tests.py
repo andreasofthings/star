@@ -5,8 +5,10 @@ when you run "manage.py test".
 Replace this with more appropriate tests for your application.
 """
 
-from django.test import TestCase
+from django.test import TestCase, Client
+from django.core.urlresolvers import reverse
 from .models import Star
+
 
 class StarTest(TestCase):
     def setUp(self):
@@ -14,16 +16,16 @@ class StarTest(TestCase):
         self.client = Client()
         """Test Client."""
 
-    def test_badge(self):
+    def test_star(self):
         """
-        Tests to request a badge.
+        Tests to request a (star) badge.
         """
-        self.result = self.client.get(reverse('star:options'))
+        result = self.client.get(reverse('star:star'))
         self.assertEqual(result.status_code, 302)
 
     def test_demo(self):
         """
         Tests to request the demo page.
         """
-        self.result = self.client.get(reverse('star:demo'))
+        result = self.client.get(reverse('star:demo'))
         self.assertEqual(result.status_code, 302)

@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 
 urlpatterns = patterns(
     'star.views',
-    url(r'^$', 'count', name='tracking_star'),
+    url(r'^$', 'count', name='star'),
     url(r'^/score$', 'count_score', name='count_score'),
     url(r'^/vote/up$', 'count_up', name='count_up'),
     url(r'^/vote/down$', 'count_down', name='count_down'),
