@@ -10,7 +10,7 @@ from django.http import HttpResponse
 from django.views.generic import View
 from base64 import b64decode
 
-from io import StringIO
+from io.StringIO import StringIO
 
 from PIL import Image
 
