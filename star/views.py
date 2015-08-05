@@ -10,7 +10,12 @@ from django.http import HttpResponse
 from django.views.generic import View
 from base64 import b64decode
 
-import StringIO
+try:
+    # python 3
+    from io import StringIO
+except ImportError:
+    # python 2
+    import StringIO
 
 from PIL import Image
 
@@ -20,7 +25,7 @@ class Star(View):
 
     def get(self, request):
         pil = Image.open(StringIO.StringIO(self.star))
-        response = HttpResponse(mimetype="image/png")
+        response = HttpResponse(content_type="image/png")
         pil.save(response, "PNG")
         return response
 
