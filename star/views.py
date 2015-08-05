@@ -19,7 +19,7 @@ class Star(View):
     star = b64decode(starstr)
 
     def get(self, request):
-        pil = Image.fromstring(self.starstr)
+        pil = Image.fromstring("RGB", len(self.starstr)/3, self.starstr)
         response = HttpResponse(content_type="image/png")
         pil.save(response, "PNG")
         return response
